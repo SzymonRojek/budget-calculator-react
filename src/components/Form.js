@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 
-import "./../styles.css";
+import "./style.css";
 
 import {
   radioButtonValidation,
@@ -29,8 +29,7 @@ const categorySelect = [
   "Salary",
 ];
 
-const Form = ({ addSubmittedItem }) => {
-  const [isSubmitted, setIsSubmitted] = useState(false);
+const Form = ({ addSubmittedItem, countBudget }) => {
   const {
     register,
     handleSubmit,
@@ -38,17 +37,24 @@ const Form = ({ addSubmittedItem }) => {
     formState: { errors },
   } = useForm();
 
+  const [isSubmitted, setIsSubmitted] = useState(false);
   return (
     <div className="container">
-      <Header title="Budget:" />
+      <Header
+        title={`Budget: ${countBudget}`}
+        style={{
+          backgroundColor: countBudget < 0 ? "crimson" : "teal",
+        }}
+      />
       <form
         onSubmit={handleSubmit((data) => {
-          addSubmittedItem(data);
+          setIsSubmitted(true);
 
           setTimeout(() => {
             setIsSubmitted(false);
           }, 2000);
 
+          addSubmittedItem(data);
           reset();
         })}
         className="form"
