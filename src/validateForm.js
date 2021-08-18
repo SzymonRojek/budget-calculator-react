@@ -10,7 +10,7 @@ export const productValidation = {
     message: "Description is invalid",
   },
   minLength: { value: 5, message: "Min length of description is 3" },
-  maxLength: { value: 25, message: "Max length of name is 20" },
+  maxLength: { value: 40, message: "Max length of name is 40" },
 };
 
 export const amountValidation = {
