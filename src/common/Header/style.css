@@ -6,12 +6,12 @@
   align-items: center;
   padding: 20px 40px;
   border-bottom: 1px solid #f0f0f0;
-  background-color: #f7f7f7;
+  background-color: teal;
 }
 
 .heading {
   margin: 0;
   font-size: 20px;
-  color: teal;
+  color: white;
   letter-spacing: 1px;
 }
