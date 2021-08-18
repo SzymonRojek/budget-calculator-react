@@ -1,19 +1,18 @@
-import { useState } from "react";
-import uuid from "react-uuid";
-import Form from "./components/Form";
-import Section from "./common/Section/Section";
-import Statement from "./common/Statement/Statement";
-import { countBudget } from "./countBudget";
+import { v4 as uuidv4 } from "uuid";
 
 import "./styles.css";
+import { Section, Statement } from "./common";
+import Form from "./components/Form";
+import { countBudget } from "./countBudget";
+import { useLocalStorageState } from "./useLocalStorage";
 
 export default function App() {
-  const [incomes, setIncomes] = useState([]);
-  const [expenses, setExpenses] = useState([]);
+  const [incomes, setIncomes] = useLocalStorageState("incomes", []);
+  const [expenses, setExpenses] = useLocalStorageState("expenses", []);
 
   const addSubmittedItem = (data) => {
     const submittedData = {
-      id: uuid(),
+      id: uuidv4(),
       statement: data.statement,
       product: data.product,
       amount: data.amount,
