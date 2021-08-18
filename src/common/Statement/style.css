@@ -10,6 +10,7 @@
   display: grid;
   grid-template-columns: 1fr auto;
   grid-gap: 10px;
+  line-height: 1.5;
   align-items: center;
   padding: 15px;
   border-bottom: 1px solid #e1dcdc;
