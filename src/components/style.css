@@ -1,0 +1,138 @@
+.container {
+  margin: 15px;
+  font-family: "Lato", sans-serif;
+  color: teal;
+  background-color: #fff;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+  overflow: hidden;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 30px 20px;
+  align-items: center;
+}
+
+.form-control-wrapper {
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.form-label {
+  display: inline-block;
+  margin-bottom: 10px;
+  letter-spacing: 1px;
+}
+
+.form-label-padding {
+  padding-left: 10px;
+}
+
+.form-control {
+  display: block;
+  width: 91%;
+  padding: 10px;
+  font-family: inherit;
+  font-size: 16px;
+  border: 1px solid #ddd8d8;
+  border-radius: 4px;
+}
+
+.form-control-select {
+  width: 100%;
+}
+
+.form-paragraph {
+  font-size: 18px;
+}
+
+.submitted-footer {
+  height: 50px;
+  padding-top: 20px;
+  background-color: #f7f7f7;
+  border-top: 1px solid #f0f0f0;
+}
+
+.animation-text-onSubmit {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+  color: inherit;
+  font-size: 20px;
+  letter-spacing: 1px;
+  animation: fadeIn linear 0.3s;
+  -webkit-animation: fadeIn linear 0.3s;
+  -moz-animation: fadeIn linear 0.3s;
+  -o-animation: fadeIn linear 0.3s;
+  -ms-animation: fadeIn linear 0.3s;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    visibility: hidden;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@-moz-keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@-webkit-keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@-o-keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@-ms-keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.form-button {
+  display: block;
+  margin-top: 20px;
+  padding: 15px 20px;
+  text-align: center;
+  font-size: 16px;
+  background-color: teal;
+  border: 1px solid teal;
+  border-radius: 4px;
+  color: white;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background-color 0.3s linear;
+}
+
+.form-button:hover {
+  background-color: rgb(16, 160, 160);
+}
