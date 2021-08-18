@@ -1,17 +1,18 @@
 import { useState } from "react";
 import uuid from "react-uuid";
 import Form from "./components/Form";
-import { data } from "./data";
-
 import Section from "./common/Section/Section";
 import Statement from "./common/Statement/Statement";
+import { countBudget } from "./countBudget";
+
+import "./styles.css";
 
 export default function App() {
-  const [incomes, setIncomes] = useState();
-  const [expenses, setExpenses] = useState();
+  const [incomes, setIncomes] = useState([]);
+  const [expenses, setExpenses] = useState([]);
 
   const addSubmittedItem = (data) => {
-    const newData = {
+    const submittedData = {
       id: uuid(),
       statement: data.statement,
       product: data.product,
@@ -19,17 +20,31 @@ export default function App() {
       category: data.category,
     };
 
-    const expenseStatement = newData.filter(
-      (item) => item.statement === "expense"
-    );
-    setExpenses(expenseStatement);
+    submittedData.statement === "income"
+      ? setIncomes((prevState) => [...prevState, submittedData])
+      : setExpenses((prevState) => [...prevState, submittedData]);
   };
 
+  const handleRemoveIncomes = (id) =>
+    setIncomes(incomes.filter((item) => item.id !== id));
+
+  const handleRemoveExpenses = (id) =>
+    setExpenses(incomes.filter((item) => item.id !== id));
+
   return (
-    <>
-      <Form addSubmittedItem={addSubmittedItem} />
-      <Section title="Incomes:" body={<Statement data={incomes} />} />
-      <Section title="Expenses:" body={<Statement data={expenses} />} />
-    </>
+    <main className="main-container">
+      <Form
+        addSubmittedItem={addSubmittedItem}
+        countBudget={countBudget(incomes, expenses)}
+      />
+      <Section
+        title="Incomes:"
+        body={<Statement data={incomes} removeItem={handleRemoveIncomes} />}
+      />
+      <Section
+        title="Expenses:"
+        body={<Statement data={expenses} removeItem={handleRemoveExpenses} />}
+      />
+    </main>
   );
 }
