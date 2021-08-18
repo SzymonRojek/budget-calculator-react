@@ -20,20 +20,6 @@ body {
   overflow: hidden;
 }
 
-.header {
-  padding: 20px 40px;
-  text-align: center;
-  background-color: #f7f7f7;
-  border-bottom: 1px solid #f0f0f0;
-}
-
-.heading {
-  margin: 0;
-  line-height: 1.5;
-  color: inherit;
-  letter-spacing: 1px;
-}
-
 .form {
   display: flex;
   flex-direction: column;
