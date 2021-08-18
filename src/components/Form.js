@@ -29,7 +29,7 @@ const categorySelect = [
   "Salary",
 ];
 
-const Form = ({ addSubmittedItem }) => {
+const Form = ({ handleData }) => {
   const [isSubmitted, setIsSubmitted] = useState(false);
   const {
     register,
@@ -45,12 +45,12 @@ const Form = ({ addSubmittedItem }) => {
       </header>
       <form
         onSubmit={handleSubmit((data) => {
-          setIsSubmitted(true);
+          handleData(data);
 
-          setTimeout(() => {
-            setIsSubmitted(false);
-          }, 2000);
-          addSubmittedItem(data);
+          // setTimeout(() => {
+          //   setIsSubmitted(false);
+          // }, 2000);
+
           // reset();
         })}
         className="form"
