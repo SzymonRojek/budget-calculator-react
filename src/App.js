@@ -2,10 +2,13 @@ import { useState } from "react";
 import uuid from "react-uuid";
 import Form from "./components/Form";
 import { data } from "./data";
-import Income from "./components/Income";
+
+import Section from "./common/Section/Section";
+import Statement from "./common/Statement/Statement";
 
 export default function App() {
-  const [submittedData, setSubmittedData] = useState({});
+  const [incomes, setIncomes] = useState();
+  const [expenses, setExpenses] = useState();
 
   const addSubmittedItem = (data) => {
     const newData = {
@@ -16,13 +19,17 @@ export default function App() {
       category: data.category,
     };
 
-    setSubmittedData(newData);
+    const expenseStatement = newData.filter(
+      (item) => item.statement === "expense"
+    );
+    setExpenses(expenseStatement);
   };
 
   return (
     <>
-      <Form handleData={addSubmittedItem} />
-      <Income data={data} />
+      <Form addSubmittedItem={addSubmittedItem} />
+      <Section title="Incomes:" body={<Statement data={incomes} />} />
+      <Section title="Expenses:" body={<Statement data={expenses} />} />
     </>
   );
 }

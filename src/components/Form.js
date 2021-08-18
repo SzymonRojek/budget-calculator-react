@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { useForm } from "react-hook-form";
-import uuid from "react-uuid";
 
 import "./../styles.css";
 
@@ -10,6 +9,7 @@ import {
   amountValidation,
   selectValidation,
 } from "../validateForm";
+import Header from "../common/Header/Header";
 
 const styledError = {
   message: {
@@ -29,7 +29,7 @@ const categorySelect = [
   "Salary",
 ];
 
-const Form = ({ handleData }) => {
+const Form = ({ addSubmittedItem }) => {
   const [isSubmitted, setIsSubmitted] = useState(false);
   const {
     register,
@@ -40,18 +40,16 @@ const Form = ({ handleData }) => {
 
   return (
     <div className="container">
-      <header className="header">
-        <h1 className="heading">Budget:</h1>
-      </header>
+      <Header title="Budget:" />
       <form
         onSubmit={handleSubmit((data) => {
-          handleData(data);
+          addSubmittedItem(data);
 
-          // setTimeout(() => {
-          //   setIsSubmitted(false);
-          // }, 2000);
+          setTimeout(() => {
+            setIsSubmitted(false);
+          }, 2000);
 
-          // reset();
+          reset();
         })}
         className="form"
       >
