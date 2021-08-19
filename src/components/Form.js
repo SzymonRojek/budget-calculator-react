@@ -2,32 +2,16 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 
 import "./style.css";
-
 import {
   radioButtonValidation,
   productValidation,
   amountValidation,
   selectValidation,
-} from "../validateForm";
-import Header from "../common/Header/Header";
+} from "../helpers/validation";
 
-const styledError = {
-  message: {
-    color: "crimson",
-    fontSize: "14px",
-  },
-  input: { border: "1px solid crimson" },
-};
-
-const categorySelect = [
-  "Work",
-  "Gym",
-  "Food",
-  "Trip",
-  "Holiday",
-  "Hobby",
-  "Salary",
-];
+import { Header } from "../common";
+import { styledError, categorySelect } from "../helpers";
+import Message from "./Message";
 
 const Form = ({ addSubmittedItem, countBudget }) => {
   const {
@@ -37,28 +21,27 @@ const Form = ({ addSubmittedItem, countBudget }) => {
     formState: { errors },
   } = useForm();
 
+  const onSubmit = (data) => {
+    setIsSubmitted(true);
+
+    setTimeout(() => {
+      setIsSubmitted(false);
+    }, 2000);
+
+    addSubmittedItem(data);
+    reset();
+  };
+
   const [isSubmitted, setIsSubmitted] = useState(false);
   return (
-    <div className="container">
+    <div className="container flex-item-one">
       <Header
-        title={`Budget: ${countBudget}`}
+        title={`Budget: ${countBudget} £`}
         style={{
           backgroundColor: countBudget < 0 ? "crimson" : "teal",
         }}
       />
-      <form
-        onSubmit={handleSubmit((data) => {
-          setIsSubmitted(true);
-
-          setTimeout(() => {
-            setIsSubmitted(false);
-          }, 2000);
-
-          addSubmittedItem(data);
-          reset();
-        })}
-        className="form"
-      >
+      <form onSubmit={handleSubmit(onSubmit)} className="form">
         <div className="form-control-wrapper">
           <div>
             <p className="form-paragraph">Whether it is income or income:</p>
@@ -95,6 +78,7 @@ const Form = ({ addSubmittedItem, countBudget }) => {
             )}
           </div>
         </div>
+
         <div className="form-control-wrapper">
           <label className="form-label" htmlFor="">
             Describe your item:
@@ -149,9 +133,7 @@ const Form = ({ addSubmittedItem, countBudget }) => {
 
         <button className="form-button">Submit</button>
       </form>
-      <footer className="submitted-footer">
-        {isSubmitted && <p className="animation-text-onSubmit">Submitted!</p>}
-      </footer>
+      <Message isSubmitted={isSubmitted} />
     </div>
   );
 };
