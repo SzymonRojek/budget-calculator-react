@@ -1,7 +1,7 @@
 .container {
   margin: 15px;
   font-family: "Lato", sans-serif;
-  color: teal;
+  color: #66a182;
   background-color: #fff;
   border-radius: 5px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
@@ -60,6 +60,7 @@
   padding-top: 20px;
   background-color: #f7f7f7;
   border-top: 1px solid #f0f0f0;
+  transition: background-color 0.4s linear;
 }
 
 .animation-text-onSubmit {
@@ -129,8 +130,9 @@
   padding: 15px 20px;
   text-align: center;
   font-size: 16px;
-  background-color: teal;
-  border: 1px solid teal;
+  font-weight: bold;
+  background-color: #66a182;
+  border: 1px solid #66a182;
   border-radius: 4px;
   color: white;
   letter-spacing: 2px;
@@ -140,5 +142,5 @@
 }
 
 .form-button:hover {
-  background-color: rgb(16, 160, 160);
+  background-color: #60b688;
 }
