@@ -1,6 +1,7 @@
 .list {
   margin: 0;
   padding: 0;
+  max-width: 500px;
   list-style: none;
   background-color: white;
   color: teal;
@@ -10,9 +11,9 @@
   display: grid;
   grid-template-columns: 1fr auto;
   grid-gap: 10px;
-  line-height: 1.5;
-  align-items: center;
   padding: 15px;
+  align-items: center;
+  line-height: 1.5;
   border-bottom: 1px solid #e1dcdc;
 }
 
