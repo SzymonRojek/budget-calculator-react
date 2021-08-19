@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/budget-calculator-react/static/css/main.38372b8e.chunk.css",
-    "main.js": "/budget-calculator-react/static/js/main.b3a7fe3e.chunk.js",
-    "main.js.map": "/budget-calculator-react/static/js/main.b3a7fe3e.chunk.js.map",
+    "main.js": "/budget-calculator-react/static/js/main.b207e010.chunk.js",
+    "main.js.map": "/budget-calculator-react/static/js/main.b207e010.chunk.js.map",
     "runtime-main.js": "/budget-calculator-react/static/js/runtime-main.d0635dea.js",
     "runtime-main.js.map": "/budget-calculator-react/static/js/runtime-main.d0635dea.js.map",
     "static/js/2.3da81d48.chunk.js": "/budget-calculator-react/static/js/2.3da81d48.chunk.js",
@@ -17,6 +17,6 @@
     "static/js/runtime-main.d0635dea.js",
     "static/js/2.3da81d48.chunk.js",
     "static/css/main.38372b8e.chunk.css",
-    "static/js/main.b3a7fe3e.chunk.js"
+    "static/js/main.b207e010.chunk.js"
   ]
 }
