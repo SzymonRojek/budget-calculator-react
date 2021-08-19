@@ -10,7 +10,7 @@ import {
 } from "../helpers/validation";
 
 import { Header } from "../common";
-import { styledError, categorySelect } from "../helpers";
+import { styledError, categorySelect, styledBudget } from "../helpers";
 import Message from "./Message";
 
 const Form = ({ addSubmittedItem, budget }) => {
@@ -38,7 +38,7 @@ const Form = ({ addSubmittedItem, budget }) => {
       <Header
         title={`Budget: ${budget} £`}
         style={{
-          backgroundColor: budget < 0 ? "crimson" : "teal",
+          backgroundColor: styledBudget(budget),
         }}
       />
       <form onSubmit={handleSubmit(onSubmit)} className="form">
