@@ -8,10 +8,14 @@ import { initialIncome, initialExpenses } from "./helpers/initialData";
 
 function App() {
   const [incomes, setIncomes] = useLocalStorageState("incomes", initialIncome);
-
   const [expenses, setExpenses] = useLocalStorageState(
     "expenses",
     initialExpenses
+  );
+
+  const { totalIncomes, totalExpenses, budget } = countBudget(
+    incomes,
+    expenses
   );
 
   const addSubmittedItem = (data) => {
@@ -37,16 +41,13 @@ function App() {
   return (
     <main className="main-container">
       <Section
-        title="Incomes:"
+        title={`Incomes: ${totalIncomes} £`}
         body={<Statement data={incomes} removeItem={handleRemoveIncomes} />}
       />
-      <Form
-        addSubmittedItem={addSubmittedItem}
-        countBudget={countBudget(incomes, expenses)}
-      />
+      <Form addSubmittedItem={addSubmittedItem} budget={budget} />
 
       <Section
-        title="Expenses:"
+        title={`Incomes: ${totalExpenses} £`}
         body={<Statement data={expenses} removeItem={handleRemoveExpenses} />}
       />
     </main>

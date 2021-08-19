@@ -13,7 +13,7 @@ import { Header } from "../common";
 import { styledError, categorySelect } from "../helpers";
 import Message from "./Message";
 
-const Form = ({ addSubmittedItem, countBudget }) => {
+const Form = ({ addSubmittedItem, budget }) => {
   const {
     register,
     handleSubmit,
@@ -36,9 +36,9 @@ const Form = ({ addSubmittedItem, countBudget }) => {
   return (
     <div className="container flex-item-one">
       <Header
-        title={`Budget: ${countBudget} £`}
+        title={`Budget: ${budget} £`}
         style={{
-          backgroundColor: countBudget < 0 ? "crimson" : "teal",
+          backgroundColor: budget < 0 ? "crimson" : "teal",
         }}
       />
       <form onSubmit={handleSubmit(onSubmit)} className="form">

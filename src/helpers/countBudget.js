@@ -10,7 +10,9 @@ const countBudget = (incomes, expenses) => {
     totalExpenses = totalExpenses + +element.amount;
   }
 
-  return totalIncomes - totalExpenses;
+  const budget = totalIncomes - totalExpenses;
+
+  return { totalIncomes, totalExpenses, budget };
 };
 
 export default countBudget;
