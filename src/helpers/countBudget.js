@@ -1,4 +1,4 @@
-export const countBudget = (incomes, expenses) => {
+const countBudget = (incomes, expenses) => {
   let totalIncomes = 0;
   let totalExpenses = 0;
 
@@ -12,3 +12,5 @@ export const countBudget = (incomes, expenses) => {
 
   return totalIncomes - totalExpenses;
 };
+
+export default countBudget;
