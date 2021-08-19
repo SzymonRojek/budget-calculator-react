@@ -5,8 +5,11 @@ body {
   justify-content: center;
   align-items: center;
   background-color: rgb(239, 239, 239);
+  margin: 0 auto;
 }
 
-.main-container {
-  max-width: 500px;
+@media (min-width: 1024px) {
+  .main-container {
+    display: flex;
+  }
 }
