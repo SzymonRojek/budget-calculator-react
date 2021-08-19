@@ -1,7 +1,7 @@
 import "./style.css";
 
 const styledFooter = {
-  backgroundColor: "#66a182",
+  backgroundColor: "teal",
   color: "white",
 };
 const Message = ({ isSubmitted }) => (

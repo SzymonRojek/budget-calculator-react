@@ -1,7 +1,7 @@
 .container {
   margin: 15px;
   font-family: "Lato", sans-serif;
-  color: #66a182;
+  color: teal;
   background-color: #fff;
   border-radius: 5px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
@@ -131,8 +131,8 @@
   text-align: center;
   font-size: 16px;
   font-weight: bold;
-  background-color: #66a182;
-  border: 1px solid #66a182;
+  background-color: teal;
+  border: 1px solid teal;
   border-radius: 4px;
   color: white;
   letter-spacing: 2px;
@@ -142,5 +142,5 @@
 }
 
 .form-button:hover {
-  background-color: #60b688;
+  background-color: rgb(23, 179, 179);
 }
