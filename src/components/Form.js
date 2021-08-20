@@ -13,7 +13,9 @@ import { Header } from "../common";
 import { styledError, categorySelect, styledBudget } from "../helpers";
 import Message from "./Message";
 
-const Form = ({ addNewItem, budget, removedItem, isRemovedItem }) => {
+const Form = (props) => {
+  const { addNewItem, budget, removedItem, isRemovedItem, className } = props;
+
   const [isAddedItem, setIsAddedItem] = useState(false);
   const [addedItem, setAddedItem] = useState("");
 
@@ -143,6 +145,7 @@ const Form = ({ addNewItem, budget, removedItem, isRemovedItem }) => {
         addedItem={addedItem}
         isRemovedItem={isRemovedItem}
         removedItem={removedItem}
+        className={className}
       />
     </div>
   );
