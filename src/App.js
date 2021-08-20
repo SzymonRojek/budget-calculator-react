@@ -1,10 +1,11 @@
 import { v4 as uuidv4 } from "uuid";
-
+import { useEffect } from "react";
 import "./styles.css";
 import { Section, Statement } from "./common";
 import Form from "./components";
 import { countBudget, useLocalStorageState } from "./helpers";
 import { initialIncome, initialExpenses } from "./helpers/initialData";
+import { useState } from "react";
 
 function App() {
   const [incomes, setIncomes] = useLocalStorageState("incomes", initialIncome);
@@ -13,12 +14,15 @@ function App() {
     initialExpenses
   );
 
+  const [removedItem, setRemovedItem] = useState([]);
+  const [isRemovedItem, setIsRemovedItem] = useState(false);
+
   const { totalIncomes, totalExpenses, budget } = countBudget(
     incomes,
     expenses
   );
 
-  const addSubmittedItem = (data) => {
+  const addNewItem = (data) => {
     const submittedData = {
       id: uuidv4(),
       statement: data.statement,
@@ -32,23 +36,47 @@ function App() {
       : setExpenses((prevState) => [...prevState, submittedData]);
   };
 
-  const handleRemoveIncomes = (id) =>
-    setIncomes(incomes.filter((item) => item.id !== id));
+  const handleRemoveItem = (id, typeData, setData) => {
+    setData(typeData.filter((item) => item.id !== id));
 
-  const handleRemoveExpenses = (id) =>
-    setExpenses(expenses.filter((item) => item.id !== id));
+    setRemovedItem(typeData.filter((item) => item.id === id)[0].product);
+    setIsRemovedItem(true);
+  };
+
+  useEffect(() => {
+    const setIntervalId = setTimeout(() => {
+      setIsRemovedItem(false);
+    }, 2000);
+
+    return () => clearTimeout(setIntervalId);
+  }, [isRemovedItem]);
 
   return (
     <main className="main-container">
       <Section
         title={`Incomes: ${totalIncomes} £`}
-        body={<Statement data={incomes} removeItem={handleRemoveIncomes} />}
+        body={
+          <Statement
+            data={incomes}
+            removeItem={(id) => handleRemoveItem(id, incomes, setIncomes)}
+          />
+        }
       />
-      <Form addSubmittedItem={addSubmittedItem} budget={budget} />
+      <Form
+        addNewItem={addNewItem}
+        budget={budget}
+        isRemovedItem={isRemovedItem}
+        removedItem={removedItem}
+      />
 
       <Section
-        title={`Incomes: ${totalExpenses} £`}
-        body={<Statement data={expenses} removeItem={handleRemoveExpenses} />}
+        title={`Expenses: ${totalExpenses} £`}
+        body={
+          <Statement
+            data={expenses}
+            removeItem={(id) => handleRemoveItem(id, expenses, setExpenses)}
+          />
+        }
       />
     </main>
   );

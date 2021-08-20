@@ -4,12 +4,19 @@ const styledFooter = {
   backgroundColor: "teal",
   color: "white",
 };
-const Message = ({ isSubmitted }) => (
+
+const Message = ({ isAddedItem, addedItem, isRemovedItem, removedItem }) => (
   <footer
     className="submitted-footer"
-    style={isSubmitted ? styledFooter : null}
+    style={isAddedItem || isRemovedItem ? styledFooter : null}
   >
-    {isSubmitted && <p className="animation-text-onSubmit">Submitted!</p>}
+    {isAddedItem && (
+      <p className="animation-text-onSubmit">{addedItem} added!</p>
+    )}
+
+    {isRemovedItem && (
+      <p className="animation-text-onSubmit">{removedItem} removed!</p>
+    )}
   </footer>
 );
 

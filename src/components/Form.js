@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
 
 import "./style.css";
@@ -13,7 +13,10 @@ import { Header } from "../common";
 import { styledError, categorySelect, styledBudget } from "../helpers";
 import Message from "./Message";
 
-const Form = ({ addSubmittedItem, budget }) => {
+const Form = ({ addNewItem, budget, removedItem, isRemovedItem }) => {
+  const [isAddedItem, setIsAddedItem] = useState(false);
+  const [addedItem, setAddedItem] = useState("");
+
   const {
     register,
     handleSubmit,
@@ -22,17 +25,18 @@ const Form = ({ addSubmittedItem, budget }) => {
   } = useForm();
 
   const onSubmit = (data) => {
-    setIsSubmitted(true);
-
-    setTimeout(() => {
-      setIsSubmitted(false);
-    }, 2000);
-
-    addSubmittedItem(data);
+    setIsAddedItem(true);
+    addNewItem(data);
+    setAddedItem(data.product);
     reset();
   };
 
-  const [isSubmitted, setIsSubmitted] = useState(false);
+  useEffect(() => {
+    const setIntervalId = setTimeout(() => setIsAddedItem(false), 2000);
+
+    return () => clearTimeout(setIntervalId);
+  }, [isAddedItem]);
+
   return (
     <div className="container flex-item-one">
       <Header
@@ -133,7 +137,13 @@ const Form = ({ addSubmittedItem, budget }) => {
 
         <button className="form-button">Submit</button>
       </form>
-      <Message isSubmitted={isSubmitted} />
+
+      <Message
+        isAddedItem={isAddedItem}
+        addedItem={addedItem}
+        isRemovedItem={isRemovedItem}
+        removedItem={removedItem}
+      />
     </div>
   );
 };
