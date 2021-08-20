@@ -5,19 +5,20 @@ const styledFooter = {
   color: "white",
 };
 
-const Message = ({ isAddedItem, addedItem, isRemovedItem, removedItem }) => (
-  <footer
-    className="submitted-footer"
-    style={isAddedItem || isRemovedItem ? styledFooter : null}
-  >
-    {isAddedItem && (
-      <p className="animation-text-onSubmit">{addedItem} added!</p>
-    )}
+const Message = (props) => {
+  const { isAddedItem, addedItem, isRemovedItem, removedItem } = props;
 
-    {isRemovedItem && (
-      <p className="animation-text-onSubmit">{removedItem} removed!</p>
-    )}
-  </footer>
-);
+  return (
+    <footer
+      className="submitted-footer "
+      style={isAddedItem || isRemovedItem ? styledFooter : null}
+    >
+      <p className="animation-text-onSubmit">
+        {(isAddedItem && `${addedItem} added!`) ||
+          (isRemovedItem && `${removedItem} removed!`)}
+      </p>
+    </footer>
+  );
+};
 
 export default Message;
