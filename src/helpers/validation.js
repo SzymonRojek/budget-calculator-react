@@ -9,7 +9,7 @@ export const productValidation = {
     value: /^\D[a-zA-Z0-9_]+( [a-zA-Z0-9_]+)*$/,
     message: "Description is invalid",
   },
-  minLength: { value: 5, message: "Min length of description is 3" },
+  minLength: { value: 3, message: "Min length of description is 3" },
   maxLength: { value: 40, message: "Max length of name is 40" },
 };
 
