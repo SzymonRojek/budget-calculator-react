@@ -1,7 +1,12 @@
 import "./style.css";
 
-const styledFooter = {
+const styledAddedItem = {
   backgroundColor: "teal",
+  color: "white",
+};
+
+const styledRemovedItem = {
+  backgroundColor: "crimson",
   color: "white",
 };
 
@@ -11,7 +16,9 @@ const Message = (props) => {
   return (
     <footer
       className="submitted-footer "
-      style={isAddedItem || isRemovedItem ? styledFooter : null}
+      style={
+        isAddedItem ? styledAddedItem : isRemovedItem ? styledRemovedItem : null
+      }
     >
       <p className="animation-text-onSubmit">
         {(isAddedItem && `${addedItem} added!`) ||
