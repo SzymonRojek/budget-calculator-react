@@ -1,16 +1,14 @@
-import { useForm } from "react-hook-form";
+import React from "react";
 import { radioButtonValidation } from "../../helpers/validation";
 
-const RadioInput = ({ label, value }) => {
-  const { register } = useForm();
-
+const RadioInput = ({ value, register, label }) => {
   return (
     <div>
       <input
-        {...register("statement", { ...radioButtonValidation })}
         type="radio"
         id="statement"
         value={value}
+        {...register("statement", { ...radioButtonValidation })}
       />
       <label className="form-label form-label-padding" htmlFor="statement">
         {label}
