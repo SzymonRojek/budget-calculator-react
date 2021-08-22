@@ -12,6 +12,7 @@ import {
 import { Header } from "../common";
 import { styledError, categorySelect, styledBudget } from "../helpers";
 import Message from "./Message";
+import { RadioInput } from "./FormControl";
 
 const Form = (props) => {
   const { addNewItem, budget, removedItem, isRemovedItem, className } = props;
@@ -29,7 +30,7 @@ const Form = (props) => {
   const onSubmit = (data) => {
     setIsAddedItem(true);
     addNewItem(data);
-    setAddedItem(data.product);
+    setAddedItem(data.item);
     reset();
   };
 
@@ -51,12 +52,12 @@ const Form = (props) => {
         <div className="form-control-wrapper">
           <div>
             <p className="form-paragraph">Whether it is income or income:</p>
-            <div>
+            {/* <div>
               <input
                 {...register("statement", { ...radioButtonValidation })}
                 type="radio"
                 value="income"
-                id="income"
+                id="statement"
               />
               <label
                 className="form-label form-label-padding"
@@ -64,21 +65,11 @@ const Form = (props) => {
               >
                 Income
               </label>
-            </div>
-            <div>
-              <input
-                {...register("statement", { ...radioButtonValidation })}
-                type="radio"
-                value="expense"
-                id="statement"
-              />
-              <label
-                className="form-label form-label-padding"
-                htmlFor="statement"
-              >
-                Expense
-              </label>
-            </div>
+            </div> */}
+            <RadioInput value="income" label="income" />
+
+            <RadioInput value="expense" label="expense" />
+
             {errors.statement && (
               <p style={styledError.message}>{errors.statement.message}</p>
             )}
@@ -91,12 +82,12 @@ const Form = (props) => {
           </label>
           <input
             placeholder="enter your product"
-            style={errors.product ? styledError.input : null}
-            {...register("product", { ...productValidation })}
+            style={errors.item ? styledError.input : null}
+            {...register("item", { ...productValidation })}
             className="form-control"
           ></input>
-          {errors.product && (
-            <p style={styledError.message}>{errors.product.message}</p>
+          {errors.item && (
+            <p style={styledError.message}>{errors.item.message}</p>
           )}
         </div>
         <div className="form-control-wrapper">
