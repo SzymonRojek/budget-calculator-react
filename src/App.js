@@ -1,5 +1,6 @@
 import { v4 as uuidv4 } from "uuid";
 import { useEffect } from "react";
+
 import "./styles.css";
 import { Section, Statement } from "./common";
 import Form from "./components";
@@ -26,7 +27,7 @@ function App() {
     const submittedData = {
       id: uuidv4(),
       statement: data.statement,
-      product: data.product,
+      item: data.item,
       amount: data.amount,
       category: data.category,
     };
@@ -39,7 +40,7 @@ function App() {
   const handleRemoveItem = (id, typeData, setData) => {
     setData(typeData.filter((item) => item.id !== id));
 
-    setRemovedItem(typeData.filter((item) => item.id === id)[0].product);
+    setRemovedItem(typeData.filter((item) => item.id === id)[0].item);
     setIsRemovedItem(true);
   };
 
