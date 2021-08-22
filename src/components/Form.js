@@ -4,7 +4,7 @@ import { useForm } from "react-hook-form";
 import "./style.css";
 import { Header } from "../common";
 import { styledError, styledBudget } from "../helpers";
-import { Message } from "./Message/";
+import { Message } from "./Message";
 import { RadioInput, TextInput, AmountInput, SelectInput } from "./FormControl";
 
 const Form = (props) => {
