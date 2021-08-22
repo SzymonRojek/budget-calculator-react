@@ -4,10 +4,10 @@ const Statement = ({ data, removeItem, className }) => (
   <div className={className}>
     <ul className="list">
       {data &&
-        data.map(({ id, amount, product, category }) => (
+        data.map(({ id, amount, item, category }) => (
           <li className="item" key={`item-${id}`}>
             <span className="content">
-              {product} ({category}), {amount} £
+              {item} ({category}), {amount} £
             </span>
             <button className="button" onClick={() => removeItem(id)}>
               X
