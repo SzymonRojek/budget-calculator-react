@@ -16,3 +16,8 @@
   color: white;
   letter-spacing: 1px;
 }
+
+.heading-amount {
+  display: block;
+  line-height: 1.7;
+}
