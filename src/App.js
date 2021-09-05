@@ -1,20 +1,22 @@
 import { v4 as uuidv4 } from "uuid";
-import { useEffect } from "react";
+import { useState, useEffect } from "react";
 
 import "./styles.css";
 import { Section, Statement } from "./common";
 import Form from "./components";
-import { countBudget, useLocalStorageState } from "./helpers";
-import { initialIncome, initialExpenses } from "./helpers/initialData";
-import { useState } from "react";
+import {
+  countBudget,
+  useLocalStorageState,
+  currencyFormatter,
+} from "./helpers";
+import { defaultIncomes, defaultExpenses } from "./helpers/defaultData";
 
 function App() {
-  const [incomes, setIncomes] = useLocalStorageState("incomes", initialIncome);
+  const [incomes, setIncomes] = useLocalStorageState("incomes", defaultIncomes);
   const [expenses, setExpenses] = useLocalStorageState(
     "expenses",
-    initialExpenses
+    defaultExpenses
   );
-
   const [removedItem, setRemovedItem] = useState([]);
   const [isRemovedItem, setIsRemovedItem] = useState(false);
 
@@ -55,7 +57,8 @@ function App() {
   return (
     <main className="main-container">
       <Section
-        title={`Incomes: ${totalIncomes} £`}
+        title="Incomes"
+        amount={currencyFormatter(totalIncomes)}
         body={
           <Statement
             data={incomes}
@@ -71,7 +74,8 @@ function App() {
       />
 
       <Section
-        title={`Expenses: ${totalExpenses} £`}
+        title="Expenses"
+        amount={currencyFormatter(totalExpenses)}
         body={
           <Statement
             data={expenses}
