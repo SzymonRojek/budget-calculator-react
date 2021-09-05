@@ -1,0 +1,9 @@
+.confirm-wrapper {
+  min-height: 100px;
+  font-size: 20px;
+}
+
+.buttons-wrapper {
+  display: flex;
+  justify-content: space-around;
+}
