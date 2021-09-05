@@ -1,0 +1,15 @@
+.container {
+  margin: 15px;
+  font-family: "Lato", sans-serif;
+  color: teal;
+  background-color: #fff;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+  overflow: hidden;
+}
+
+@media (min-width: 1024px) {
+  .container {
+    min-width: 300px;
+  }
+}
