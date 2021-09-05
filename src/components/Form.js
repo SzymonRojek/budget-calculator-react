@@ -3,9 +3,9 @@ import { useForm } from "react-hook-form";
 
 import "./style.css";
 import { Header } from "../common";
-import { styledError, styledBudget } from "../helpers";
+import { styledError, styledBudget, currencyFormatter } from "../helpers";
 import { Message } from "./Message";
-import { RadioInput, TextInput, AmountInput, SelectInput } from "./FormControl";
+import { RadioInput, TextInput, NumberInput, SelectInput } from "./FormControl";
 
 const Form = (props) => {
   const { addNewItem, budget, removedItem, isRemovedItem, className } = props;
@@ -36,10 +36,11 @@ const Form = (props) => {
   return (
     <div className="container flex-item-one">
       <Header
-        title={`Budget: ${budget} £`}
         style={{
           backgroundColor: styledBudget(budget),
         }}
+        title="Budget"
+        amount={currencyFormatter(budget)}
       />
       <form onSubmit={handleSubmit(onSubmit)} className="form">
         <div className="form-control-wrapper">
@@ -62,7 +63,7 @@ const Form = (props) => {
           styledError={styledError}
         />
 
-        <AmountInput
+        <NumberInput
           register={register}
           errors={errors}
           styledError={styledError}
