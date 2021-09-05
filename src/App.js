@@ -39,12 +39,23 @@ function App() {
       : setExpenses((prevState) => [...prevState, submittedData]);
   };
 
+  const [isCancelRemoveItem, setIsCancelRemoveItem] = useState(true);
+  const [dataItemToRemove, setDataItemToRemove] = useState({});
+
+  const handleDataItemToRemove = (id, typeData) => {
+    setDataItemToRemove(typeData.filter((item) => item.id === id)[0]);
+    setIsCancelRemoveItem(true);
+  };
+
   const handleRemoveItem = (id, typeData, setData) => {
     setData(typeData.filter((item) => item.id !== id));
 
     setRemovedItem(typeData.filter((item) => item.id === id)[0].item);
+
     setIsRemovedItem(true);
   };
+
+  const handleCancelRemoveItem = () => setIsCancelRemoveItem(false);
 
   useEffect(() => {
     const setIntervalId = setTimeout(() => {
@@ -62,10 +73,15 @@ function App() {
         body={
           <Statement
             data={incomes}
+            dataItemToRemove={dataItemToRemove}
+            confirmRemoveItem={(id) => handleDataItemToRemove(id, incomes)}
             removeItem={(id) => handleRemoveItem(id, incomes, setIncomes)}
+            cancelRemoveItem={() => handleCancelRemoveItem()}
+            isCancelRemoveItem={isCancelRemoveItem}
           />
         }
       />
+
       <Form
         addNewItem={addNewItem}
         budget={budget}
@@ -76,10 +92,15 @@ function App() {
       <Section
         title="Expenses"
         amount={currencyFormatter(totalExpenses)}
+        style={{ backgroundColor: "crimson" }}
         body={
           <Statement
             data={expenses}
+            dataItemToRemove={dataItemToRemove}
+            confirmRemoveItem={(id) => handleDataItemToRemove(id, expenses)}
             removeItem={(id) => handleRemoveItem(id, expenses, setExpenses)}
+            cancelRemoveItem={() => handleCancelRemoveItem()}
+            isCancelRemoveItem={isCancelRemoveItem}
           />
         }
       />
