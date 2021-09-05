@@ -1,4 +1,6 @@
-import "./style.css";
+import "./styles.css";
+import { currencyFormatter } from "./../../helpers";
+import DeleteButton from "../DeleteButton";
 
 const Statement = ({ data, removeItem, className }) => (
   <div className={className}>
@@ -7,11 +9,9 @@ const Statement = ({ data, removeItem, className }) => (
         data.map(({ id, amount, item, category }) => (
           <li className="item" key={`item-${id}`}>
             <span className="content">
-              {item} ({category}), {amount} £
+              {item} ({category}) <div>{currencyFormatter(amount)}</div>
             </span>
-            <button className="button" onClick={() => removeItem(id)}>
-              X
-            </button>
+            <DeleteButton removeItem={() => removeItem(id)} />
           </li>
         ))}
     </ul>
