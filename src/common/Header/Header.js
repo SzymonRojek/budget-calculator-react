@@ -1,9 +1,11 @@
-import "./style.css";
+import "./styles.css";
 
-const Header = ({ title, style }) => {
+const Header = ({ style, title, amount }) => {
   return (
     <header className="header" style={style}>
-      <h2 className="heading">{title}</h2>
+      <h2 className="heading">
+        {title}: <span className="heading-amount">{amount}</span>
+      </h2>
     </header>
   );
 };
