@@ -3,7 +3,7 @@ export const radioButtonValidation = {
   valueAsNumber: { value: true, message: "Please, type only numbers" },
 };
 
-export const productValidation = {
+export const itemValidation = {
   required: { value: true, message: "Please fill out this field" },
   pattern: {
     value: /^\D[a-zA-Z0-9_]+( [a-zA-Z0-9_]+)*$/,
