@@ -1,4 +1,4 @@
-import "./../style.css";
+import "./styles.css";
 
 const styledAddedItem = {
   backgroundColor: "teal",
@@ -20,7 +20,7 @@ const Message = (props) => {
         isAddedItem ? styledAddedItem : isRemovedItem ? styledRemovedItem : null
       }
     >
-      <p className="animation-text-onSubmit">
+      <p className="show-text-onSubmit">
         {(isAddedItem && `${addedItem} added!`) ||
           (isRemovedItem && `${removedItem} removed!`)}
       </p>

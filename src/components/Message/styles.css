@@ -1,0 +1,17 @@
+.submitted-footer {
+  height: 50px;
+  padding-top: 20px;
+  background-color: #f7f7f7;
+  border-top: 1px solid #f0f0f0;
+  transition: background-color 0.4s linear;
+}
+
+.show-text-onSubmit {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+  color: inherit;
+  font-size: 20px;
+  letter-spacing: 1px;
+}
