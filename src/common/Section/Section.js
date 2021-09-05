@@ -1,9 +1,9 @@
-import Header from "../Header/Header";
-import "./style.css";
+import Header from "./../Header";
+import "./styles.css";
 
-const Section = ({ title, body }) => (
+const Section = ({ title, amount, body, className }) => (
   <section className="wrapper">
-    <Header title={title} />
+    <Header title={title} amount={amount} className={className} />
     <div className="bodyWrapper">{body}</div>
   </section>
 );
