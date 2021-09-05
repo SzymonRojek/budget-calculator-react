@@ -1,6 +1,6 @@
 import { amountValidation } from "../../helpers/validation";
 
-const AmountInput = ({ register, errors, styledError }) => (
+const NumberInput = ({ register, errors, styledError }) => (
   <div className="form-control-wrapper">
     <label className="form-label" htmlFor="amount">
       Amount:
@@ -8,6 +8,8 @@ const AmountInput = ({ register, errors, styledError }) => (
     <input
       placeholder="enter an amount"
       type="number"
+      step="0.01"
+      min="0"
       style={errors.amount ? styledError.input : null}
       className="form-control"
       {...register("amount", { ...amountValidation })}
@@ -18,4 +20,4 @@ const AmountInput = ({ register, errors, styledError }) => (
   </div>
 );
 
-export default AmountInput;
+export default NumberInput;
