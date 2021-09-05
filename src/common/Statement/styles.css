@@ -17,24 +17,6 @@
   border-bottom: 1px solid #e1dcdc;
 }
 
-.button {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: 0 10px 0 10px;
-  background-color: crimson;
-  width: 30px;
-  height: 30px;
-  padding: 0;
-  border: none;
-  cursor: pointer;
-  border-radius: 4px;
-  color: white;
-  font-size: 20px;
-  font-weight: bold;
-  transition: background-color 0.3s ease-in;
-}
-
 .content {
   word-break: break-word;
 }

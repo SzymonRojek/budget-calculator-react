@@ -1,21 +1,47 @@
 import "./styles.css";
 import { currencyFormatter } from "./../../helpers";
-import DeleteButton from "../DeleteButton";
+import ConfirmRemove from "../ConfirmRemove";
+import Button from "../Button";
 
-const Statement = ({ data, removeItem, className }) => (
-  <div className={className}>
-    <ul className="list">
-      {data &&
-        data.map(({ id, amount, item, category }) => (
+const Statement = (props) => {
+  const {
+    data,
+    dataItemToRemove,
+    confirmRemoveItem,
+    removeItem,
+    cancelRemoveItem,
+    isCancelRemoveItem,
+    className,
+  } = props;
+
+  return (
+    <div className={className}>
+      <ul className="list">
+        {data.map(({ id, amount, item, category }) => (
           <li className="item" key={`item-${id}`}>
-            <span className="content">
-              {item} ({category}) <div>{currencyFormatter(amount)}</div>
-            </span>
-            <DeleteButton removeItem={() => removeItem(id)} />
+            {dataItemToRemove.id === id && isCancelRemoveItem ? (
+              <ConfirmRemove
+                removeItem={() => removeItem(id)}
+                cancelRemoveItem={cancelRemoveItem}
+                dataItemToRemove={dataItemToRemove}
+              />
+            ) : (
+              <>
+                <span className="content">
+                  {item} ({category}) <div>{currencyFormatter(amount)}</div>
+                </span>
+                <Button
+                  label="x"
+                  style={{ backgroundColor: "crimson" }}
+                  onClick={() => confirmRemoveItem(id)}
+                />
+              </>
+            )}
           </li>
         ))}
-    </ul>
-  </div>
-);
+      </ul>
+    </div>
+  );
+};
 
 export default Statement;
